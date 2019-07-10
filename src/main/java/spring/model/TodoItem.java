@@ -1,5 +1,7 @@
 package spring.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "todoitems")
-public class TodoItem {
+public class TodoItem implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="id_generator")
 	@SequenceGenerator(name = "id_generator", sequenceName="todoitems_id_seq", allocationSize =1)
