@@ -22,12 +22,14 @@ public class DefaultUserDetailsService implements UserDetailsService{
 	private UserDetails mockUser(String username) {
 		String userPass = "pass";
 		List<String> userList = new ArrayList<>();
+		userList.add("user");
+		userList.add("admin");
 		if(!userList.contains(username)) {
 			throw new UsernameNotFoundException("Invalid username or password");
 		}
 		UserDetails user;
 		switch(username) {
-		case "developer":
+		case "user":
 			user = User.withDefaultPasswordEncoder()
 			.username(username)
 			.password(userPass)
