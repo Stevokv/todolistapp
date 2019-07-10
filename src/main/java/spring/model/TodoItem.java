@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "todoitems")
 public class TodoItem implements Serializable{
@@ -17,8 +19,11 @@ public class TodoItem implements Serializable{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="id_generator")
 	@SequenceGenerator(name = "id_generator", sequenceName="todoitems_id_seq", allocationSize =1)
 	@Column(name="id", updatable=false, nullable=false)
+	@ApiModelProperty(notes= "id of the todo task")
 	private Long id;
+	@ApiModelProperty(notes = "title of the todo task")
 	private String title;
+	@ApiModelProperty(notes="status of the todo task ")
 	private String description;
 	@Column(name = "is_completed")
 	private boolean isCompleted = false;

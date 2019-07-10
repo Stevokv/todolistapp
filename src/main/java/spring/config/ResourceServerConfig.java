@@ -23,7 +23,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	public void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-        .antMatchers(HttpMethod.GET,"/todoitems/**").permitAll()
+        .antMatchers(HttpMethod.GET,"/**").permitAll()  //.antMatchers(HttpMethod.GET,"/todoitems/**", "/swagger-ui.html").permitAll()
         .and()
         .authorizeRequests()
         .antMatchers("/oauth/token").permitAll()
