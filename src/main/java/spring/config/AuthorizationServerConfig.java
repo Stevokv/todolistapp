@@ -38,6 +38,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 			.withClient(CLIENT_ID)
 			.secret(CLIENT_SECRET)
 			.authorizedGrantTypes(GRANT_TYPE_PASSWORD, AUTHORIZATION_CODE, REFRESH_TOKEN)
+			.authorities("ROLE_USER", "ROLE_ADMIN")
 			.scopes(SCOPE_READ, SCOPE_WRITE, TRUST)
 			.accessTokenValiditySeconds(VALID_FOREVER)
 			.refreshTokenValiditySeconds(VALID_FOREVER);

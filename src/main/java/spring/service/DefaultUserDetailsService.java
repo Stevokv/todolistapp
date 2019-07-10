@@ -1,5 +1,6 @@
 package spring.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,22 +20,35 @@ public class DefaultUserDetailsService implements UserDetailsService{
 	}
 	
 	private UserDetails mockUser(String username) {
-		String userName = "stevodev";
 		String userPass = "pass";
-		
-		if(!userName.equals(username)) {
-			throw new UsernameNotFoundException("Invalid username or password.");
+		List<String> userList = new ArrayList<>();
+		if(!userList.contains(username)) {
+			throw new UsernameNotFoundException("Invalid username or password");
 		}
-		
-		UserDetails user = User.withDefaultPasswordEncoder()
-				.username(username)
-				.password(userPass)
-				.authorities(getAuthority())
-				.build();
+		UserDetails user;
+		switch(username) {
+		case "developer":
+			user = User.withDefaultPasswordEncoder()
+			.username(username)
+			.password(userPass)
+			.authorities("ROLE_USER")
+			.build();
+			break;
+		case "admin":
+			user = User.withDefaultPasswordEncoder()
+			.username(username)
+			.password(userPass)
+			.authorities("ROLE_ADMIN")
+			.build();
+			break;
+		default:
+			user = null;
+			break;
+		}	
 		return user;
 	}
 	
-	private List<SimpleGrantedAuthority> getAuthority(){
-		return Collections.emptyList();
-	}
+//	private List<SimpleGrantedAuthority> getAuthority(){
+//		return Collections.emptyList();
+//	}
 }
