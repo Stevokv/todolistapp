@@ -3,10 +3,9 @@ Small REST api todolist app implemented using Bootspring + MVC Spring + JPA + Po
 
 Database schema:
 
-CREATE SEQUENCE todoitems_id_seq;
-CREATE TABLE todoitems(
-id BIGINT DEFAULT NEXTVAL('todoitems_id_seq'),
-title VARCHAR(100),
-description VARCHAR(255),
-is_completed BOOLEAN
-);
+CREATE SEQUENCE todoitems_id_seq;<br />
+CREATE TABLE todoitems( <br />
+id BIGINT DEFAULT NEXTVAL('todoitems_id_seq'), <br />
+title VARCHAR(100), <br />
+description VARCHAR(255), <br />
+is_completed BOOLEAN); 
